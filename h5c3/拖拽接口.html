@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        .div1{
+            width:200px;
+            height: 200px;
+            border: 1px solid red;
+            position: relative;
+            margin-left: 20px;
+            float: left;
+        }
+        .div2{
+            width:200px;
+            height: 200px;
+            border: 1px solid red;
+            position: relative;
+            margin-left: 20px;
+            float: left;
+        }
+        .div3{
+            width:200px;
+            height: 200px;
+            border: 1px solid red;
+            position: relative;
+            margin-left: 20px;
+            float: left;
+        }
+        p{
+            background-color: orange;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+ <div class="div1" id="div1">
+     <p id="pe" draggable="true">drag</p>
+     <p id="pe1" draggable="true">drag2</p>
+ </div>
+<div class="div2" id="div2"></div>
+<div class="div3" id="div3"></div>
+ <script>
+     // var p=document.querySelector("#pe");
+     // var div2=document.querySelector("#div2");
+     // var div1=document.querySelector("#div1");
+
+    //  p.ondragstart=function (){
+    //      console.log("ondragstart");
+    //  }
+    //  p.ondragend=function(){
+    //      console.log("ondragend");
+    //  }
+    //  p.ondragleave=function(){
+    //      console.log("ondragleave");
+    //  }
+    //  p.ondrag=function(){
+    //      console.log("ondrag");
+    //  }
+    //
+    //
+    //  div2.ondragenter=function(){
+    //      console.log("ondragenter");
+    //  }
+    //  div2.ondragover=function(e){
+    //      e.preventDefault();
+    //  }
+    // div2.ondrop=function(){
+    //      console.log("ondrop");
+    //      div2.appendChild(p);
+    // }
+
+        document.ondragstart=function(e){
+            e.target.style.opacity=0.5;
+            e.target.parentNode.style.borderWidth="5px";
+            console.log(e.target);//p标签
+            e.dataTransfer.setData("text/html",e.target.id);
+        }
+        document.ondragend=function(e){
+            e.target.style.opacity=1;
+            e.target.parentNode.style.borderWidth="1px";
+        }
+        document.ondragover=function(e){
+            e.preventDefault();
+        }
+        document.ondrop=function (e) {
+            var id=e.dataTransfer.getData("text/html");
+            console.log(id);
+            e.target.appendChild(document.getElementById(id));
+        }
+
+
+ </script>
+</body>
+</html>

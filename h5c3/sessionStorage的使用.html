@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input type="text" id="userName"> <br>
+<input type="button" value="设置数据" id="setData">
+<input type="button" value="获取数据" id="getData">
+<input type="button" value="清除数据" id="removeData">
+<script>
+    //存储数据
+    document.querySelector("#setData").onclick=function(){
+        //获取用户名
+        var name=document.querySelector("#userName").value;
+        //存储数据
+        window.sessionStorage.setItem("userName",name);
+        console.log(111);
+    }
+    //获取数据
+    document.querySelector("#getData").onclick=function(){
+    //存储数据
+        alert(window.sessionStorage.getItem("userName"));
+    }
+    //清除数据
+    document.querySelector("#removeData").onclick=function(){
+        window.sessionStorage.removeItem("userName");
+    }
+
+</script>
+</body>
+</html>

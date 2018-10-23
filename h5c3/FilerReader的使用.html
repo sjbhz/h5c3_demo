@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="">
+    <div></div>
+    <input type="file" name="myfile" id="myfile" value="提交文件" onchange="getFileContent();"> <br>
+    <input type="submit">
+</form>
+<img src="" alt="">
+<script>
+    var div=document.querySelector("div");
+
+    function getFileContent(){
+        var filereader = new FileReader();
+        console.log(filereader);
+        var file=document.getElementById("myfile").files;
+        // var file2=document.querySelector("#myfile").files;
+        console.log(file);
+        //将file传到URL中
+        filereader.readAsDataURL(file[0]);
+        console.log(filereader);//内有result属性
+        filereader.onload=function(){
+            // console.log(filereader.result);
+            //展示
+            document.querySelector("img").src=filereader.result;
+        }
+        filereader.onprogress=function(e){
+            var percent= e.loaded/e.total*100+"%";
+            div.style.width=percent;
+        }
+    }
+</script>
+</body>
+</html>
